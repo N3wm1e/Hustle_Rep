@@ -9,31 +9,21 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    administrator.cpp \
-    customer.cpp \
-    event.cpp \
+    dialog.cpp \
     main.cpp \
-    mainmenu.cpp \
-    stylehandler.cpp \
-    ticket.cpp \
-    user.cpp
+    mainwindow.cpp \
+    test.cpp
 
 HEADERS += \
-    administrator.h \
-    customer.h \
-    event.h \
-    mainmenu.h \
-    stylehandler.h \
-    ticket.h \
-    user.h
+    dialog.h \
+    mainwindow.h \
+    test.h
 
 FORMS += \
-    mainmenu.ui
+    dialog.ui \
+    mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
-
-RESOURCES += \
-    img.qrc

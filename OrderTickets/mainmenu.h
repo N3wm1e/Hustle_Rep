@@ -2,6 +2,8 @@
 #define MAINMENU_H
 
 #include <QMainWindow>
+#include <StyleHandler.h>
+#include <QFontDatabase>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainMenu; }
@@ -14,6 +16,9 @@ class MainMenu : public QMainWindow
 public:
     MainMenu(QWidget *parent = nullptr);
     ~MainMenu();
+
+private slots:
+    void on_searchButton_clicked();
 
 private:
     Ui::MainMenu *ui;
