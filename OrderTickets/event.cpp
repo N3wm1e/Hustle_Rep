@@ -12,7 +12,7 @@ bool Event::setEventName(const QString &_eventName)
     return !_eventName.isEmpty()?(eventName=_eventName, true):false;
 }
 
-QList<Ticket> Event::getEventTickets() const
+QList<Ticket>& Event::getEventTickets()
 {
     return eventTickets;
 }
@@ -35,7 +35,7 @@ bool Event::setFinished(bool _isFinished)
 
 QList<Event> Event::events;
 
-QList<Event> Event::getEvents()
+QList<Event>& Event::getEvents()
 {
     return events;
 }
