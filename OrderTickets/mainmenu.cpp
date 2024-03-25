@@ -54,6 +54,7 @@ void MainMenu::on_justButton_clicked()
 
 void MainMenu::on_showAllEventsButton_clicked()
 {
+    ui->eventList->clear();
     for (const auto&i:Event::getEvents()) {
         ui->eventList->addItem(i.getEventName());
     }
