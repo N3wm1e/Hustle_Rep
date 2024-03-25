@@ -16,11 +16,11 @@ public:
     Event(const QString&);
     QString getEventName() const;
     bool setEventName(const QString&);
-    QList<Ticket> getEventTickets() const;
+    QList<Ticket>& getEventTickets();
     bool setEventTickets(const QList<Ticket>&);
     bool getFinished() const;
     bool setFinished(bool);
-    static QList<Event> getEvents();
+    static QList<Event>& getEvents();
     bool operator == (const Event&)const;
     bool operator != (const Event&)const;
 };

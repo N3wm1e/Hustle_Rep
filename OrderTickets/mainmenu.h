@@ -4,7 +4,7 @@
 #include <QMainWindow>
 #include <StyleHandler.h>
 #include <customer.h>
-
+#include<QListWidgetItem>
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainMenu; }
 QT_END_NAMESPACE
@@ -24,6 +24,10 @@ private slots:
     void on_searchButton_clicked();
 
     void on_justButton_clicked();
+
+    void on_showAllEventsButton_clicked();
+
+    void on_eventList_itemDoubleClicked(QListWidgetItem *item);
 
 private:
     Ui::MainMenu *ui;
