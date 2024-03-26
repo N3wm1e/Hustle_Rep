@@ -12,10 +12,11 @@ bool User::searchByName()
     return true;
 }
 
-bool User::openEvent(const Event &_event)
+bool User::openEvent(const Event &_event,const Customer &_customer)
 {
  EventDescriptionWindow*descWind=new EventDescriptionWindow();
     descWind->setEvent(_event);
+    descWind->setCustomer(_customer);
     descWind->displayInfo();
     descWind->setModal(true);
     descWind->exec();

@@ -3,6 +3,7 @@
 #include <QString>
 #include <event.h>
 #include <eventdescriptionwindow.h>
+#include <customer.h>
 class User
 {
     QString login;
@@ -11,7 +12,7 @@ public:
     User(const QString&, const QString&);
     bool searchByDate();
     bool searchByName();
-    bool openEvent(const Event&);
+    bool openEvent(const Event&,const Customer*);
     bool Authorization();
     QString getLogin() const;
     QString getPassword() const;

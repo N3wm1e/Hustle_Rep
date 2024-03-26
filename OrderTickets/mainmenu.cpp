@@ -14,12 +14,17 @@ MainMenu::MainMenu(QWidget *parent)
     ui->lineEdit->setStyleSheet(StyleHandler::getStyleForSearch());
     ui->searchButton->setStyleSheet(StyleHandler::getStyleForSearchButton());
     ui->justButton->setStyleSheet(StyleHandler::getStyleForButton());
+    QList<Ticket>testTickets1;
+    QList<Ticket>testTickets2;
+    Ticket tic1("tic1");
+    tic1.setTicketPrice(100);
+    Ticket tic2("tic2");
+    tic2.setTicketPrice(150);
+    testTickets1.push_back(tic1);
+    testTickets2.push_back(tic2);
     Event ev1("afff"),ev2("ffff");
-    ev1.getEventTickets().push_back(Ticket("Ticket1"));
-    ev1.getEventTickets().push_back(Ticket("Ticket2"));
-    ev2.getEventTickets().push_back(Ticket("Ticket3"));
-    ev2.getEventTickets().push_back(Ticket("Ticket4"));
-    ev2.getEventTickets().push_back(Ticket("Ticket5"));
+    ev1.setEventTickets(testTickets1);
+    ev2.setEventTickets(testTickets2);
     Event::getEvents().push_back(ev1);
     Event::getEvents().push_back(ev2);
 
@@ -67,8 +72,6 @@ void MainMenu::on_eventList_itemDoubleClicked(QListWidgetItem *item)
     for (const auto&i:Event::getEvents()) {
         if(i.getEventName()==item->text())event=i;
     }
-    EventDescriptionWindow* descWind=new EventDescriptionWindow(event);
-    descWind->setModal(true);
-    descWind->exec();
+    currentCustomer->openEvent(event,*currentCustomer);
 }
 
