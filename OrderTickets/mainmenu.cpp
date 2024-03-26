@@ -63,11 +63,10 @@ void MainMenu::on_pushButton_clicked()
     if(ui->listWidget->currentItem()){
         QListWidgetItem *item = ui->listWidget->currentItem();
         QStringList ticketRow = item->text().split(" | ");
-        Ticket *ticketPtr = currentCustomer->findTicket(ticketRow[1].toInt());
-        if(ticketPtr!=nullptr){
-            ticketPtr->setBought(false);
-            ticketPtr->setBuyerName("");
-            currentCustomer->setMoney(currentCustomer->getMoney() + ticketPtr->getTicketPrice());
+        QList<Ticket>::Iterator ticketIterator = currentCustomer->findTicket(ticketRow[1].toInt());
+        if(currentCustomer->isTicketFound(ticketIterator)){
+            qDebug("test");
+            currentCustomer->removeTicket(&(*ticketIterator));
             delete ui->listWidget->takeItem(ui->listWidget->row(item));
         }
     }

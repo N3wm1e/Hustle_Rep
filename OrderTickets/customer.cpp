@@ -37,9 +37,16 @@ QList<Customer>& Customer::getCustomers()
 {
     return customers;
 }
-Ticket *Customer::findTicket(const int &ticketId){
-    Ticket*ticketPtr = nullptr;
-    auto ticketIterator = std::find_if(boughtTickets.begin(),boughtTickets.end(), [ticketId](Ticket ticket){return ticket.getId() == ticketId;});
-    if(ticketIterator != boughtTickets.end())ticketPtr = &(*ticketIterator);
-    return ticketPtr;
+void Customer::removeTicket(Ticket*ticket){
+    ticket->setBought(false);
+    ticket->setBuyerName("");
+    this->setMoney(this->getMoney() + ticket->getTicketPrice());
+    QList<Ticket>::Iterator ticketIterator = this->findTicket(ticket->getId());
+    if(isTicketFound(ticketIterator))boughtTickets.erase(ticketIterator);
+}
+QList<Ticket>::Iterator Customer::findTicket(const int &ticketId){
+    return std::find_if(boughtTickets.begin(),boughtTickets.end(), [ticketId](Ticket ticket){return ticket.getId() == ticketId;});;
+}
+bool Customer::isTicketFound(QList<Ticket>::Iterator ticketIterator){
+    return ticketIterator != boughtTickets.end();
 }
