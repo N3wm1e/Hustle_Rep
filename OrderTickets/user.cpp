@@ -1,5 +1,5 @@
 #include "user.h"
-
+#include"eventdescriptionwindow.h"
 User::User(const QString& _login, const QString& _pass): login(_login), password(_pass){}
 
 bool User::searchByDate()
@@ -14,7 +14,12 @@ bool User::searchByName()
 
 bool User::openEvent(const Event &_event)
 {
-    return _event!=Event(QString());
+ EventDescriptionWindow*descWind=new EventDescriptionWindow();
+    descWind->setEvent(_event);
+    descWind->displayInfo();
+    descWind->setModal(true);
+    descWind->exec();
+    return true;
 }
 
 bool User::Authorization()

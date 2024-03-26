@@ -12,7 +12,9 @@ class EventDescriptionWindow : public QDialog
     Q_OBJECT
 
 public:
-    explicit EventDescriptionWindow(Event _event,QWidget *parent = nullptr);
+    explicit EventDescriptionWindow(QWidget *parent = nullptr);
+    void setEvent(const Event&);
+    void displayInfo();
     ~EventDescriptionWindow();
 
 private:

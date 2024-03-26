@@ -2,7 +2,7 @@
 #define USER_H
 #include <QString>
 #include <event.h>
-
+#include <eventdescriptionwindow.h>
 class User
 {
     QString login;
