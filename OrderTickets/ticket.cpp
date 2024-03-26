@@ -44,7 +44,10 @@ bool Ticket::setBuyerName(const QString &_buyerName)
 }
 
 Ticket::Ticket(const QString& _eventName) : eventName(_eventName){}
-
+Ticket::Ticket(const QString&_eventName, const int&_id, const int&_ticketPrice) :
+    id(_id),
+    ticketPrice(_ticketPrice),
+    eventName(_eventName){}
 bool Ticket::setTicketPrice(int _price)
 {
     return _price<0?false:(ticketPrice=_price,true);

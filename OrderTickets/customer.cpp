@@ -37,3 +37,9 @@ QList<Customer>& Customer::getCustomers()
 {
     return customers;
 }
+Ticket *Customer::findTicket(const int &ticketId){
+    Ticket*ticketPtr = nullptr;
+    auto ticketIterator = std::find_if(boughtTickets.begin(),boughtTickets.end(), [ticketId](Ticket ticket){return ticket.getId() == ticketId;});
+    if(ticketIterator != boughtTickets.end())ticketPtr = &(*ticketIterator);
+    return ticketPtr;
+}

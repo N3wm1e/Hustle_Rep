@@ -1,0 +1,12 @@
+release/administrator.o
+release/authorization.o
+release/customer.o
+release/event.o
+release/main.o
+release/mainmenu.o
+release/stylehandler.o
+release/ticket.o
+release/user.o
+release/qrc_img.o
+release/moc_authorization.o
+release/moc_mainmenu.o

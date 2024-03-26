@@ -25,6 +25,8 @@ private slots:
 
     void on_justButton_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::MainMenu *ui;
     Customer* currentCustomer;

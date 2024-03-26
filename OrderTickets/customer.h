@@ -19,6 +19,7 @@ public:
     bool operator == (const Customer&)const;
     bool operator != (const Customer&)const;
     static QList<Customer>& getCustomers();
+    Ticket *findTicket(const int &);
 };
 
 #endif // CUSTOMER_H

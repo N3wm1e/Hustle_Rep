@@ -12,6 +12,7 @@ class Ticket
     QString buyerName;
 public:
     Ticket(const QString&);
+    Ticket(const QString&, const int&, const int&);
     bool operator == (const Ticket&)const;
     bool operator != (const Ticket&)const;
     int getId() const;
