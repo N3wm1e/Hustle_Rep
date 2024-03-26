@@ -10,7 +10,7 @@ void Customer::setMoney(int _money)
     money = _money;
 }
 
-QList<Ticket> Customer::getBoughtTickets() const
+QList<Ticket>& Customer::getBoughtTickets()
 {
     return boughtTickets;
 }

@@ -12,7 +12,7 @@ bool User::searchByName()
     return true;
 }
 
-bool User::openEvent(const Event &_event,const Customer &_customer)
+bool User::openEvent(const Event &_event,Customer*_customer)
 {
  EventDescriptionWindow*descWind=new EventDescriptionWindow();
     descWind->setEvent(_event);

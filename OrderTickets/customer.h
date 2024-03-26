@@ -14,7 +14,7 @@ public:
     Customer(const QString&, const QString&, int, const QList<Ticket>&_boughtTickets=QList<Ticket>());
     int getMoney() const;
     void setMoney(int);
-    QList<Ticket> getBoughtTickets() const;
+    QList<Ticket>& getBoughtTickets();
     void setBoughtTickets(const QList<Ticket>&);
     bool operator == (const Customer&)const;
     bool operator != (const Customer&)const;

@@ -22,7 +22,7 @@ MainMenu::MainMenu(QWidget *parent)
     tic2.setTicketPrice(150);
     testTickets1.push_back(tic1);
     testTickets2.push_back(tic2);
-    Event ev1("afff"),ev2("ffff");
+    Event ev1("TestFilm1"),ev2("TestFilm2");
     ev1.setEventTickets(testTickets1);
     ev2.setEventTickets(testTickets2);
     Event::getEvents().push_back(ev1);
@@ -72,6 +72,7 @@ void MainMenu::on_eventList_itemDoubleClicked(QListWidgetItem *item)
     for (const auto&i:Event::getEvents()) {
         if(i.getEventName()==item->text())event=i;
     }
-    currentCustomer->openEvent(event,*currentCustomer);
+
+   currentCustomer->openEvent(event,currentCustomer);
 }
 

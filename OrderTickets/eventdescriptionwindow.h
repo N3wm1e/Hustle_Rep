@@ -3,7 +3,8 @@
 
 #include <QDialog>
 #include "event.h"
-#include "customer.h"
+
+class Customer;
 namespace Ui {
 class EventDescriptionWindow;
 }
@@ -15,7 +16,8 @@ class EventDescriptionWindow : public QDialog
 public:
     explicit EventDescriptionWindow(QWidget *parent = nullptr);
     void setEvent(const Event&);
-    void setCustomer(const Customer*);
+    void setCustomer(Customer*);
+    int freeTicketsCount(Event&);
     void displayInfo();
     ~EventDescriptionWindow();
 
