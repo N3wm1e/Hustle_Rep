@@ -12,7 +12,7 @@ public:
     User(const QString&, const QString&);
     bool searchByDate();
     bool searchByName();
-    bool openEvent(const Event&, Customer*);
+    bool openEvent(Event*, Customer*);
     bool Authorization();
     QString getLogin() const;
     QString getPassword() const;

@@ -15,17 +15,19 @@ class EventDescriptionWindow : public QDialog
 
 public:
     explicit EventDescriptionWindow(QWidget *parent = nullptr);
-    void setEvent(const Event&);
     void setCustomer(Customer*);
-    int freeTicketsCount(Event&);
+    void setEvent(Event*);
     void displayInfo();
+    void displayTicketPrice(Event*);
+    int freeTicketsCount(Event*);
+
     ~EventDescriptionWindow();
 
 private slots:
     void on_BuyTicketButton_clicked();
 
 private:
-    Event event;
+    Event* event;
     Customer* customer;
     Ui::EventDescriptionWindow *ui;
 };

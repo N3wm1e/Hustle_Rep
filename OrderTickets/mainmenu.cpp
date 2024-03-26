@@ -14,6 +14,7 @@ MainMenu::MainMenu(QWidget *parent)
     ui->lineEdit->setStyleSheet(StyleHandler::getStyleForSearch());
     ui->searchButton->setStyleSheet(StyleHandler::getStyleForSearchButton());
     ui->justButton->setStyleSheet(StyleHandler::getStyleForButton());
+
     QList<Ticket>testTickets1;
     QList<Ticket>testTickets2;
     Ticket tic1("tic1");
@@ -25,6 +26,8 @@ MainMenu::MainMenu(QWidget *parent)
     Event ev1("TestFilm1"),ev2("TestFilm2");
     ev1.setEventTickets(testTickets1);
     ev2.setEventTickets(testTickets2);
+    ev1.setFinished(0);
+    ev2.setFinished(0);
     Event::getEvents().push_back(ev1);
     Event::getEvents().push_back(ev2);
 
@@ -33,6 +36,11 @@ MainMenu::MainMenu(QWidget *parent)
 void MainMenu::setAccount(Customer *_customer)
 {
     currentCustomer=_customer;
+}
+
+void MainMenu::updateBalance()
+{
+    ui->label->setText(QString::number(currentCustomer->getMoney()));
 }
 
 MainMenu::~MainMenu()
@@ -68,11 +76,17 @@ void MainMenu::on_showAllEventsButton_clicked()
 
 void MainMenu::on_eventList_itemDoubleClicked(QListWidgetItem *item)
 {
-    Event event("");
-    for (const auto&i:Event::getEvents()) {
-        if(i.getEventName()==item->text())event=i;
+    Event* event;
+    for (auto&i:Event::getEvents()) {
+        if(i.getEventName()==item->text())event=&i;
     }
 
    currentCustomer->openEvent(event,currentCustomer);
+}
+
+
+void MainMenu::on_pushButton_clicked()
+{
+    updateBalance();
 }
 

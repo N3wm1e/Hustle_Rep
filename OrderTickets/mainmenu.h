@@ -16,6 +16,7 @@ class MainMenu : public QMainWindow
 public:
     MainMenu(QWidget *parent = nullptr);
     void setAccount(Customer*);
+    void updateBalance();
     ~MainMenu();
 
 signals:
@@ -28,6 +29,8 @@ private slots:
     void on_showAllEventsButton_clicked();
 
     void on_eventList_itemDoubleClicked(QListWidgetItem *item);
+
+    void on_pushButton_clicked();
 
 private:
     Ui::MainMenu *ui;
