@@ -1,9 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-        <file>img/Icon.png</file>
-        <file>img/searchIcon.png</file>
-        <file>img/Kanit-Black.ttf</file>
-        <file>img/Kanit-Regular.ttf</file>
-        <file>img/Dosis-VariableFont_wght.ttf</file>
-    </qresource>
-</RCC>
