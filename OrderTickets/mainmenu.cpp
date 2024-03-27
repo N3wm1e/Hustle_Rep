@@ -65,7 +65,6 @@ void MainMenu::on_pushButton_clicked()
         QStringList ticketRow = item->text().split(" | ");
         QList<Ticket>::Iterator ticketIterator = currentCustomer->findTicket(ticketRow[1].toInt());
         if(currentCustomer->isTicketFound(ticketIterator)){
-            qDebug("test");
             currentCustomer->removeTicket(&(*ticketIterator));
             delete ui->listWidget->takeItem(ui->listWidget->row(item));
         }
