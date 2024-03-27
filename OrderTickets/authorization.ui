@@ -17,7 +17,7 @@
    <item row="3" column="1">
     <widget class="QPushButton" name="loginButton">
      <property name="text">
-      <string>WConfirm</string>
+      <string>Confirm</string>
      </property>
     </widget>
    </item>

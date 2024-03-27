@@ -13,6 +13,7 @@ SOURCES += \
     authorization.cpp \
     customer.cpp \
     event.cpp \
+    eventdescriptionwindow.cpp \
     main.cpp \
     mainmenu.cpp \
     stylehandler.cpp \
@@ -24,6 +25,7 @@ HEADERS += \
     authorization.h \
     customer.h \
     event.h \
+    eventdescriptionwindow.h \
     mainmenu.h \
     stylehandler.h \
     ticket.h \
@@ -31,6 +33,7 @@ HEADERS += \
 
 FORMS += \
     authorization.ui \
+    eventdescriptionwindow.ui \
     mainmenu.ui
 
 # Default rules for deployment.
