@@ -64,9 +64,9 @@ void Authorization::Login()
         ui->labelInfo->setText("You need to fill all the fields");
         return;
     }
-    for(const auto&i:Administrator::getAdmins()){
+    for(auto&i:Administrator::getAdmins()){
         if(ui->loginInput->text() == i.getLogin() && ui->passInput->text() == i.getPassword()){
-            qDebug() << "Переход на админ-меню";
+            emit TransitToAdminMenuSignal(&i);
             return;
         }
     }

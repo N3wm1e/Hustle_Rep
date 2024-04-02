@@ -22,11 +22,14 @@ public:
     bool setEventTickets(const QList<Ticket>&);
     bool getFinished() const;
     bool setFinished(bool);
+    void removeTicket(Ticket*);
     static QList<Event>& getEvents();
     bool operator == (const Event&)const;
     bool operator != (const Event&)const;
     QDateTime getEventTime() const;
     void setEventTime(const QDateTime &_eventTime);
+    static QList<Event>::Iterator searchEventByName(const QString&);
+    QList<Ticket>::Iterator searchTicketById(int);
 };
 
 #endif // EVENT_H

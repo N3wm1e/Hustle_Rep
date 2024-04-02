@@ -38,6 +38,16 @@ QList<Customer>& Customer::getCustomers()
     return customers;
 }
 
+QList<Customer>::Iterator Customer::getCustomerByName(const QString & _name)
+{
+    if(_name=="" || _name==" "){
+        return Customer::getCustomers().end();
+    }
+    return std::find_if(Customer::getCustomers().begin(), Customer::getCustomers().end(), [&](Customer _customer){
+        return _customer.getLogin() == _name;
+    });
+}
+
 void Customer::removeTicket(Ticket*ticket){
     ticket->setBought(false);
     ticket->setBuyerName("");

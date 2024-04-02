@@ -2,6 +2,7 @@
 #include <authorization.h>
 #include <mainmenu.h>
 #include <customer.h>
+#include <adminmenu.h>
 
 int main(int argc, char *argv[])
 {
@@ -10,15 +11,26 @@ int main(int argc, char *argv[])
     mainMenu.testAddEvents();
     Authorization auth;
     auth.show();
-    QObject::connect(&mainMenu, &MainMenu::TransitToAuthorization, [&](){
+    AdminMenu aMenu;
+    QObject::connect(&mainMenu, &MainMenu::TransitToAuthorization, [&mainMenu, &auth](){
         mainMenu.hide();
         auth.show();
     });
-    QObject::connect(&auth, &Authorization::TransitToCustomerMenuSignal, [&](Customer* _item){
+    QObject::connect(&auth, &Authorization::TransitToCustomerMenuSignal, [&auth, &mainMenu](Customer* _item){
         auth.hide();
         mainMenu.setAccount(_item);
         mainMenu.setDefaultMenu();
         mainMenu.show();
+    });
+    QObject::connect(&aMenu, &AdminMenu::TransitToAuthorization, [&auth, &aMenu](){
+        aMenu.hide();
+        auth.show();
+    });
+    QObject::connect(&auth, &Authorization::TransitToAdminMenuSignal, [&auth, &aMenu](Administrator* _item){
+        auth.hide();
+        aMenu.setAccount(_item);
+        aMenu.setDefaultWindow();
+        aMenu.show();
     });
     return a.exec();
 }

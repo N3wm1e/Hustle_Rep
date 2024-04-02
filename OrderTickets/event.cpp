@@ -1,4 +1,5 @@
 #include "event.h"
+#include <QList>
 
 QDateTime Event::getEventTime() const
 {
@@ -8,6 +9,20 @@ QDateTime Event::getEventTime() const
 void Event::setEventTime(const QDateTime &_eventTime)
 {
     eventTime = _eventTime;
+}
+
+QList<Event>::Iterator Event::searchEventByName(const QString & _name)
+{
+    return std::find_if(Event::getEvents().begin(), Event::getEvents().end(), [&](Event _event){
+        return _event.getEventName() == _name;
+    });
+}
+
+QList<Ticket>::Iterator Event::searchTicketById(int _id)
+{
+    return std::find_if(this->getEventTickets().begin(), this->getEventTickets().end(), [&](Ticket _ticket){
+        return _ticket.getId()==_id;
+    });
 }
 
 Event::Event(const QString& _eventName) : eventName(_eventName){}
@@ -41,6 +56,16 @@ bool Event::setFinished(bool _isFinished)
 {
     isFinished=_isFinished;
     return true;
+}
+
+void Event::removeTicket(Ticket * _ticket)
+{
+    auto ticketIter = std::find_if(getEventTickets().begin(), getEventTickets().end(), [&](const Ticket& _labmdaTicket) {
+        return _labmdaTicket.getId() == _ticket->getId();
+    });
+
+    if (ticketIter != getEventTickets().end())
+        getEventTickets().erase(ticketIter);
 }
 
 QList<Event> Event::events;

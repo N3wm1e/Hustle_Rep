@@ -24,7 +24,7 @@ void MainMenu::testAddEvents()
     QList<Ticket>testTickets2;
     Event ev1("TestFilm1"),ev2("TestFilm2");
     ev1.setEventTime(QDateTime(QDate(2024, 12, 1), QTime(11,50)));
-    ev2.setEventTime(QDateTime(QDate(2024, 11, 1), QTime(18,15)));
+    ev2.setEventTime(QDateTime(QDate(2023, 11, 1), QTime(18,15)));
     Ticket tic1("tic1",0,100);
     tic1.setEventName(ev1.getEventName());
     Ticket tic2("tic2",1,100);
@@ -63,6 +63,8 @@ void MainMenu::setDefaultMenu()
     setStyles();
     ui->balanceLabel->setText("None");
     ui->ticketsList->clear();
+    ui->searchDate->setDate(QDateTime::currentDateTime().date());
+    ui->searchDate->setMinimumDate(QDateTime::currentDateTime().date());
 }
 
 MainMenu::~MainMenu()
@@ -87,7 +89,9 @@ void MainMenu::on_searchButton_clicked()
             }
         }
         else{ //Выдаём ивент по названию
-            ui->eventList->addItem(currentCustomer->searchByName(ui->searchInput->text()));
+            QString eventName = currentCustomer->searchByName(ui->searchInput->text());
+            if(eventName!="")
+                ui->eventList->addItem(eventName);
         }
     }
 
@@ -96,6 +100,7 @@ void MainMenu::on_searchButton_clicked()
 
 void MainMenu::on_justButton_clicked()
 {
+    currentCustomer->Authorization();
     emit TransitToAuthorization();
 }
 
@@ -156,8 +161,8 @@ void MainMenu::on_eventList_itemDoubleClicked(QListWidgetItem *item)
 void MainMenu::on_showAllEventsButton_clicked()
 {
     ui->eventList->clear();
-    for (const auto&i:Event::getEvents()) {
-        ui->eventList->addItem(i.getEventName());
+    for(const auto &i:currentCustomer->showAllEvents()){
+        ui->eventList->addItem(i);
     }
 }
 

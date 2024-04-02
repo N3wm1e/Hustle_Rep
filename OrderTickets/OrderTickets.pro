@@ -9,9 +9,12 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    addcustomerform.cpp \
     administrator.cpp \
+    adminmenu.cpp \
     authorization.cpp \
     customer.cpp \
+    editcustomerform.cpp \
     event.cpp \
     eventdescriptionwindow.cpp \
     main.cpp \
@@ -21,9 +24,12 @@ SOURCES += \
     user.cpp
 
 HEADERS += \
+    addcustomerform.h \
     administrator.h \
+    adminmenu.h \
     authorization.h \
     customer.h \
+    editcustomerform.h \
     event.h \
     eventdescriptionwindow.h \
     mainmenu.h \
@@ -32,7 +38,10 @@ HEADERS += \
     user.h
 
 FORMS += \
+    addcustomerform.ui \
+    adminmenu.ui \
     authorization.ui \
+    editcustomerform.ui \
     eventdescriptionwindow.ui \
     mainmenu.ui
 

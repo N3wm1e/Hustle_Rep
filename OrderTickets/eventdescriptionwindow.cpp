@@ -79,7 +79,7 @@ void EventDescriptionWindow::on_BuyTicketButton_clicked()
     int customerMoney=customer->getMoney();
 
     if(!event->getEventTickets().size()){
-        QMessageBox::warning(this, "Online Cash Register", "There's no events");
+        QMessageBox::warning(this, "Online Cash Register", "There's no tickets");
         return;
     }
     if(!freeTicketsCount(event)){

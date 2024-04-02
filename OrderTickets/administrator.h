@@ -12,8 +12,8 @@ class Administrator : public User
     static QList<Administrator> admins;
 public:
     Administrator(const QString&, const QString&);
-    bool editCustomer(const Customer&);
-    bool addCustomer();
+    bool editCustomer(Customer*, const QString&, const QString&, int);
+    bool addCustomer(const QString&, const QString&, int);
     bool deleteEventTickets(Event&);
     bool watchAllBoughtTickets();
     bool deleteTicket(Ticket&);

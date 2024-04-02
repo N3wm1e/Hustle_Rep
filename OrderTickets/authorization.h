@@ -26,6 +26,7 @@ public:
 
 signals:
     void TransitToCustomerMenuSignal(Customer*);
+    void TransitToAdminMenuSignal(Administrator*);
 
 private slots:
     void Login();

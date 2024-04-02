@@ -19,6 +19,7 @@ public:
     bool operator == (const Customer&)const;
     bool operator != (const Customer&)const;
     static QList<Customer>& getCustomers();
+    static QList<Customer>::Iterator getCustomerByName(const QString&);
 
     void removeTicket(Ticket * ticket);
     QList<Ticket*>::Iterator findTicket(const int &);

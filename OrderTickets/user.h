@@ -18,6 +18,11 @@ public:
     bool Authorization();
     QString getLogin() const;
     QString getPassword() const;
+    void setLogin(const QString&);
+    void setPassword(const QString&);
+
+private:
+    EventDescriptionWindow*descWind;
 };
 
 #endif // USER_H
