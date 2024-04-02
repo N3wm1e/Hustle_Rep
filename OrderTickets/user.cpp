@@ -1,20 +1,45 @@
 #include "user.h"
-#include"eventdescriptionwindow.h"
-User::User(const QString& _login, const QString& _pass): login(_login), password(_pass){}
 
-bool User::searchByDate()
+User::User(const QString& _login, const QString& _pass): login(_login), password(_pass), descWind(nullptr){}
+
+QStringList User::searchByDate(const QDate& _date)
 {
-    return true;
+    QStringList stringList;
+    QDateTime currentDate = QDateTime::currentDateTime();
+    for(const auto&i:Event::getEvents()){
+        if(currentDate > i.getEventTime())continue;
+        if(i.getEventTime().date().year()==_date.year() && i.getEventTime().date().month()==_date.month() && i.getEventTime().date().day()==_date.day()){
+            stringList.push_back(i.getEventName());
+        }
+    }
+    return stringList;
 }
 
-bool User::searchByName()
+QString User::searchByName(const QString& _name)
 {
-    return true;
+    QDateTime currentDate = QDateTime::currentDateTime();
+    for(const auto&i:Event::getEvents()){
+        if(currentDate > i.getEventTime())continue;
+        if(_name == i.getEventName()) return i.getEventName();
+    }
+    return "";
+}
+
+QStringList User::showAllEvents()
+{
+    QStringList stringList;
+    QDateTime currentDate = QDateTime::currentDateTime();
+    for (const auto&i:Event::getEvents()) {
+        if(currentDate > i.getEventTime())continue;
+        stringList.push_back(i.getEventName());
+    }
+    return stringList;
 }
 
 bool User::openEvent(Event *_event,Customer*_customer)
 {
- EventDescriptionWindow*descWind=new EventDescriptionWindow();
+    if(!descWind)
+        descWind=new EventDescriptionWindow();
     descWind->setEvent(_event);
     descWind->setCustomer(_customer);
     descWind->displayInfo();
@@ -37,4 +62,14 @@ QString User::getLogin() const
 QString User::getPassword() const
 {
     return password;
+}
+
+void User::setLogin(const QString &_login)
+{
+    login=_login;
+}
+
+void User::setPassword(const QString &_pass)
+{
+    password=_pass;
 }

@@ -2,7 +2,9 @@
 #define EVENTDESCRIPTIONWINDOW_H
 
 #include <QDialog>
+#include <QMessageBox>
 #include "event.h"
+#include <stylehandler.h>
 
 class Customer;
 namespace Ui {
@@ -19,6 +21,7 @@ public:
     void setEvent(Event*);
     void displayInfo();
     void displayTicketPrice(Event*);
+    void setStyles();
     int freeTicketsCount(Event*);
 
     ~EventDescriptionWindow();

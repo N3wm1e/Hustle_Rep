@@ -22,20 +22,17 @@ public:
     void readAllAccounts();
     ~Authorization();
 
-    Customer* getCurrentCustomer();
-    void setCurrentCustomer(Customer*);
-
     void setStyles();
 
 signals:
-    void TransitToCustomerMenuSignal();
+    void TransitToCustomerMenuSignal(Customer*);
+    void TransitToAdminMenuSignal(Administrator*);
 
 private slots:
     void Login();
 
 private:
     Ui::Authorization *ui;
-    Customer* currentCustomer;
 };
 
 #endif // AUTHORIZATION_H

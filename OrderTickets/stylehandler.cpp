@@ -22,7 +22,6 @@ QString StyleHandler::getStyleForSearchButton()
     return
         "QPushButton{"
            "qproperty-icon: url(:/img/searchIcon.png);"
-           "padding: 7.5px;"
            "background-color: #00C0A3;"
            "border: none;"
            "border-radius: 10px;"
@@ -100,6 +99,20 @@ QString StyleHandler::getStyleForList()
         "background-color: #00C0A3;"
         "color: #ffffff;"
            "}";
+}
+
+QString StyleHandler::getStyleForDate()
+{
+    return
+        "QDateEdit {\
+           border: 1px solid #00C0A3;\
+           border-radius: 5px;\
+           padding: 5px;\
+        }\
+        QDateEdit:focus{\
+           border: 1px solid #845EC2;\
+           background-color: #e4ecf1;\
+        }";
 }
 
 void StyleHandler::setFonts()

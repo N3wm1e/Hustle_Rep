@@ -4,7 +4,6 @@
 Authorization::Authorization(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::Authorization)
-    , currentCustomer(nullptr)
 {
     ui->setupUi(this);
     this->setWindowTitle("Online Cash Register");
@@ -54,10 +53,8 @@ Authorization::~Authorization()
         }
         file.close();
     }else{
-        qWarning("[AUTHORIZATION]Cannot open file for reading");
+        qWarning("[AUTHORIZATION]Cannot open file for writing");
     }
-
-    currentCustomer=nullptr;
     delete ui;
 }
 
@@ -67,30 +64,19 @@ void Authorization::Login()
         ui->labelInfo->setText("You need to fill all the fields");
         return;
     }
-    for(const auto&i:Administrator::getAdmins()){
+    for(auto&i:Administrator::getAdmins()){
         if(ui->loginInput->text() == i.getLogin() && ui->passInput->text() == i.getPassword()){
-            qDebug() << "Переход на админ-меню";
+            emit TransitToAdminMenuSignal(&i);
             return;
         }
     }
     for(auto &i:Customer::getCustomers()){
         if(ui->loginInput->text() == i.getLogin() && ui->passInput->text() == i.getPassword()){
-            currentCustomer=&i;
-            emit TransitToCustomerMenuSignal();
+            emit TransitToCustomerMenuSignal(&i);
             return;
         }
     }
     ui->labelInfo->setText("Incorrect login or password");
-}
-
-Customer* Authorization::getCurrentCustomer()
-{
-    return currentCustomer;
-}
-
-void Authorization::setCurrentCustomer(Customer *_currentCustomer)
-{
-    currentCustomer = _currentCustomer;
 }
 
 void Authorization::setStyles()
