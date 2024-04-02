@@ -142,8 +142,8 @@ void AdminMenu::on_showAllEventsBtn_clicked()
 
 
 void AdminMenu::on_RemoveAllTicketsOnEvent_clicked()
-{    if(!ui->ticketsListForAdmin->selectedItems().size()){
-        QMessageBox::warning(this, "Online Cash Register", "You should choose a ticket to delete!");
+{    if(!ui->eventListForAdmin->selectedItems().size()){
+        QMessageBox::warning(this, "Online Cash Register", "You should choose a event for deleting tickets!");
         return;
     }
     QString chosenEvent = ui->eventListForAdmin->selectedItems().first()->text();
