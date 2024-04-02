@@ -154,6 +154,7 @@ void AdminMenu::on_RemoveAllTicketsOnEvent_clicked()
                 currentAdmin->deleteTicket(ticket);
 
             }
+            QMessageBox::information(this, "Online Cash Register", "Deleting of tickets is successful");
             return;
         }
     }
