@@ -150,12 +150,12 @@
          <widget class="QComboBox" name="chooseSearch">
           <item>
            <property name="text">
-            <string>По названию</string>
+            <string>By name</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>По дате</string>
+            <string>By date</string>
            </property>
           </item>
          </widget>
