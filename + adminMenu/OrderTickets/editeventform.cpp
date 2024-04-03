@@ -18,7 +18,6 @@ EditEventForm::~EditEventForm()
 void EditEventForm::on_editEvent_ConfirmBtn_clicked()
 {
     if(checkFields()){
-        fillFields();
         currentAdmin->editEvent(chosenEvent,ui->editEvent_NameEdit->text(),ui->editEvent_TimeEdit->dateTime(),ui->editEvent_TicketAmountEdit->text().toInt(),ui->editEvent_TicketPriceEdit->text().toInt());
         QMessageBox::information(this,"Online Cash Register","Event "+chosenEvent->getEventName()+" edited successfully!");
         this->close();

@@ -2,6 +2,7 @@
 #define EVENT_H
 
 #include <QString>
+#include <QRandomGenerator64>
 #include <QList>
 #include <ticket.h>
 #include <qdatetime.h>
@@ -28,7 +29,9 @@ public:
     QDateTime getEventTime() const;
     void setEventTime(const QDateTime &_eventTime);
     QList<Ticket> generateTickets(const int, const int);
+    static int generateUniqueId();
     static bool isEventInList(const QList<Event>&, const QString&);
+
 };
 
 #endif // EVENT_H
