@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AddEventForm</class>
+ <widget class="QDialog" name="AddEventForm">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>300</width>
+    <height>250</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>300</width>
+    <height>250</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QWidget" name="formLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>281</width>
+     <height>201</height>
+    </rect>
+   </property>
+   <layout class="QFormLayout" name="formLayout">
+    <item row="0" column="0">
+     <widget class="QLabel" name="eventNameLabel">
+      <property name="text">
+       <string>Event Name:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="eventTimeLabel">
+      <property name="text">
+       <string>Event Time:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="eventNameEdit"/>
+    </item>
+    <item row="1" column="1">
+     <widget class="QDateTimeEdit" name="eventTimeEdit"/>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="eventTicketPriceLabel">
+      <property name="text">
+       <string>Ticket Price:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QLineEdit" name="eventTicketPriceEdit"/>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="eventTicketAmountLabel">
+      <property name="text">
+       <string>Ticket Amount:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QLineEdit" name="eventTicketAmountEdit"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QPushButton" name="addEventBtn">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>220</y>
+     <width>101</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Add Event</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

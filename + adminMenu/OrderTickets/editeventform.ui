@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>EditEventForm</class>
+ <widget class="QDialog" name="EditEventForm">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QPushButton" name="editEvent_ConfirmBtn">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>260</y>
+     <width>101</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Edit event</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="formLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>381</width>
+     <height>241</height>
+    </rect>
+   </property>
+   <layout class="QFormLayout" name="formLayout">
+    <item row="0" column="0">
+     <widget class="QLabel" name="editEvent_NameLabel">
+      <property name="text">
+       <string>Event Name:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="editEvent_TimeLabel">
+      <property name="text">
+       <string>Event Time:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="editEvent_NameEdit"/>
+    </item>
+    <item row="1" column="1">
+     <widget class="QDateTimeEdit" name="editEvent_TimeEdit"/>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="editEvent_TicketPriceLabel">
+      <property name="text">
+       <string>Ticket Price:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QLineEdit" name="editEvent_TicketPriceEdit"/>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="editEvent_TicketAmountLabel">
+      <property name="text">
+       <string>Ticket Amount:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QLineEdit" name="editEvent_TicketAmountEdit"/>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

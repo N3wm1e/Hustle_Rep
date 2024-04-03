@@ -14,6 +14,7 @@ public:
     static QString getStyleForInput();
     static QString getStyleForText();
     static QString getStyleForList();
+    static QString getStyleForDate();
     static void setFonts();
 };
 
