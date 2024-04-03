@@ -18,6 +18,7 @@ public:
     void setAdministrator(Administrator*);
     void setCustomerForEdit(Customer*);
     void fillFields();
+    void setStyles();
     ~EditCustomerForm();
 
 private slots:

@@ -10,11 +10,13 @@ CONFIG += c++17
 
 SOURCES += \
     addcustomerform.cpp \
+    addeventform.cpp \
     administrator.cpp \
     adminmenu.cpp \
     authorization.cpp \
     customer.cpp \
     editcustomerform.cpp \
+    editeventform.cpp \
     event.cpp \
     eventdescriptionwindow.cpp \
     main.cpp \
@@ -25,11 +27,13 @@ SOURCES += \
 
 HEADERS += \
     addcustomerform.h \
+    addeventform.h \
     administrator.h \
     adminmenu.h \
     authorization.h \
     customer.h \
     editcustomerform.h \
+    editeventform.h \
     event.h \
     eventdescriptionwindow.h \
     mainmenu.h \
@@ -39,9 +43,11 @@ HEADERS += \
 
 FORMS += \
     addcustomerform.ui \
+    addeventform.ui \
     adminmenu.ui \
     authorization.ui \
     editcustomerform.ui \
+    editeventform.ui \
     eventdescriptionwindow.ui \
     mainmenu.ui
 

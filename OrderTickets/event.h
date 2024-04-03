@@ -5,6 +5,7 @@
 #include <QList>
 #include <ticket.h>
 #include <qdatetime.h>
+#include <QRandomGenerator>
 
 class Event
 {
@@ -30,6 +31,10 @@ public:
     void setEventTime(const QDateTime &_eventTime);
     static QList<Event>::Iterator searchEventByName(const QString&);
     QList<Ticket>::Iterator searchTicketById(int);
+
+    QList<Ticket> generateTickets(const int, const int);
+    static int generateUniqueId();
+    static bool isEventInList(const QList<Event>&, const QString&);
 };
 
 #endif // EVENT_H

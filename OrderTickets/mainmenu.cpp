@@ -24,7 +24,7 @@ void MainMenu::testAddEvents()
     QList<Ticket>testTickets2;
     Event ev1("TestFilm1"),ev2("TestFilm2");
     ev1.setEventTime(QDateTime(QDate(2024, 12, 1), QTime(11,50)));
-    ev2.setEventTime(QDateTime(QDate(2023, 11, 1), QTime(18,15)));
+    ev2.setEventTime(QDateTime(QDate(2025, 11, 1), QTime(18,15)));
     Ticket tic1("tic1",0,100);
     tic1.setEventName(ev1.getEventName());
     Ticket tic2("tic2",1,100);

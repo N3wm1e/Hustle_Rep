@@ -10,8 +10,7 @@ EditCustomerForm::EditCustomerForm(QWidget *parent)
     ui->setupUi(this);
     this->setWindowTitle("Online Cash Register");
     this->setWindowIcon(QIcon("://img/Icon.png"));
-    validator = new QIntValidator(this);
-    ui->moneyInput->setValidator(validator);
+    setStyles();
 }
 
 void EditCustomerForm::setAdministrator(Administrator * _admin)
@@ -31,9 +30,19 @@ void EditCustomerForm::fillFields()
     ui->moneyInput->setText(QString::number(chosenCustomer->getMoney()));
 }
 
+void EditCustomerForm::setStyles()
+{
+    ui->editCustomerButton->setStyleSheet(StyleHandler::getStyleForButton());
+    ui->loginInput->setStyleSheet(StyleHandler::getStyleForInput());
+    ui->loginLabel->setStyleSheet(StyleHandler::getStyleForText());
+    ui->moneyInput->setStyleSheet(StyleHandler::getStyleForInput());
+    ui->moneyLabel->setStyleSheet(StyleHandler::getStyleForText());
+    ui->passInput->setStyleSheet(StyleHandler::getStyleForInput());
+    ui->passLabel->setStyleSheet(StyleHandler::getStyleForText());
+}
+
 EditCustomerForm::~EditCustomerForm()
 {
-    delete validator;
     delete ui;
 }
 
@@ -57,6 +66,8 @@ void EditCustomerForm::on_editCustomerButton_clicked()
             return;
         }
     }
+    QIntValidator* validator = new QIntValidator(this);
+    ui->moneyInput->setValidator(validator);
     if(ui->moneyInput->hasAcceptableInput()){
         currentAdmin->editCustomer(chosenCustomer, ui->loginInput->text(), ui->passInput->text(), ui->moneyInput->text().toInt());
         QMessageBox::information(this, "Online Cash Register", "Account " + ui->loginInput->text() + " edited successfully");
@@ -64,6 +75,7 @@ void EditCustomerForm::on_editCustomerButton_clicked()
         QMessageBox::critical(this, "Online Cash Register", "You should input digits in 'money' field");
         return;
     }
+    delete validator;
     this->close();
 }
 

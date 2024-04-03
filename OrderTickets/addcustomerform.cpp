@@ -10,6 +10,7 @@ AddCustomerForm::AddCustomerForm(QWidget *parent)
     this->setWindowIcon(QIcon("://img/Icon.png"));
     validator = new QIntValidator(this);
     ui->moneyInput->setValidator(validator);
+    setStyles();
 }
 
 void AddCustomerForm::setAccount(Administrator * _admin)
@@ -22,6 +23,17 @@ void AddCustomerForm::setDefaultWindow()
     ui->loginInput->setText("");
     ui->passInput->setText("");
     ui->moneyInput->setText("");
+}
+
+void AddCustomerForm::setStyles()
+{
+    ui->addCustomerButton->setStyleSheet(StyleHandler::getStyleForButton());
+    ui->loginInput->setStyleSheet(StyleHandler::getStyleForInput());
+    ui->loginLabel->setStyleSheet(StyleHandler::getStyleForText());
+    ui->moneyInput->setStyleSheet(StyleHandler::getStyleForInput());
+    ui->moneyLabel->setStyleSheet(StyleHandler::getStyleForText());
+    ui->passInput->setStyleSheet(StyleHandler::getStyleForInput());
+    ui->passLabel->setStyleSheet(StyleHandler::getStyleForText());
 }
 
 AddCustomerForm::~AddCustomerForm()

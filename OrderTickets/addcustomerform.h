@@ -19,6 +19,7 @@ public:
     explicit AddCustomerForm(QWidget *parent = nullptr);
     void setAccount(Administrator*);
     void setDefaultWindow();
+    void setStyles();
     ~AddCustomerForm();
 
 private slots:

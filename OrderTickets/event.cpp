@@ -84,3 +84,24 @@ bool Event::operator != (const Event& _anotherEvent)const
 {
     return eventName!=_anotherEvent.getEventName();
 }
+
+QList<Ticket>Event::generateTickets(const int amountOfTickets, const int ticketPrice){
+    QList<Ticket>ticketList;
+    for(int i = 1; i <= amountOfTickets; i ++){
+        ticketList.push_back(Ticket(Event::getEventName(),Event::generateUniqueId()+i,ticketPrice));
+    }
+    return ticketList;
+}
+int Event::generateUniqueId() {
+    qint64 currentTime = QDateTime::currentMSecsSinceEpoch();
+    int uniqueId = static_cast<int>(currentTime) + QRandomGenerator::global()->generate();
+    return uniqueId;
+}
+bool Event::isEventInList(const QList<Event>&eventsList, const QString& eventName){
+    for(const Event &event : eventsList){
+        if(event.getEventName() == eventName){
+            return true;
+        }
+    }
+    return false;
+}

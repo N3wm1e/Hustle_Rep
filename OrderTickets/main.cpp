@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     MainMenu mainMenu;
-    mainMenu.testAddEvents();
+    //mainMenu.testAddEvents();
     Authorization auth;
     auth.show();
     AdminMenu aMenu;

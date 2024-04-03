@@ -18,7 +18,8 @@ bool Administrator::addCustomer(const QString& _login, const QString& _pass, int
 
 bool Administrator::deleteEventTickets(Event & _event)
 {
-    return _event!=Event(QString());
+    for(auto&i:_event.getEventTickets()) deleteTicket(i);
+    return true;
 }
 
 bool Administrator::watchAllBoughtTickets()
@@ -43,9 +44,12 @@ bool Administrator::deleteAllTickets()
     return true;
 }
 
-bool Administrator::editEvent(Event & _event)
+bool Administrator::editEvent(Event * _event,const QString &eventName, const QDateTime &eventTime, int amount, int price)
 {
-    return _event!=Event(QString());
+    _event->setEventName(eventName);
+    _event->setEventTime(eventTime);
+    _event->setEventTickets(_event->generateTickets(amount,price));
+    return true;
 }
 
 bool Administrator::removeEvent(Event &_event)
