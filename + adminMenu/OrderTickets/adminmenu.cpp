@@ -126,12 +126,3 @@ void AdminMenu::on_deleteEventBtn_clicked()
     }
 }
 
-
-void AdminMenu::on_showAllEventsBtn_clicked()
-{
-    QList<Event> eventList = Event::getEvents();
-    for(int i = 0; i < eventList.size(); i ++) {
-        ui->eventsList->addItem(eventList.at(i).getEventName());
-    }
-}
-
