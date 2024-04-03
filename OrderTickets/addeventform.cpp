@@ -19,11 +19,7 @@ AddEventForm::~AddEventForm()
 void AddEventForm::on_addEventBtn_clicked()
 {
     if(checkFields()){
-        Event newEvent(ui->eventNameEdit->text());
-        newEvent.setEventTime(ui->eventTimeEdit->dateTime());
-        newEvent.setEventTickets(newEvent.generateTickets(ui->eventTicketAmountEdit->text().toInt(),ui->eventTicketPriceEdit->text().toInt()));
-        newEvent.setFinished(ui->eventTimeEdit->dateTime() <= QDateTime::currentDateTime());
-        Event::getEvents().push_back(newEvent);
+        currentAdmin->addEvent(ui->eventNameEdit->text(), ui->eventTimeEdit->dateTime(), ui->eventTicketAmountEdit->text().toInt(), ui->eventTicketPriceEdit->text().toInt());
         this->close();
     }
 }
@@ -58,6 +54,11 @@ void AddEventForm::setStyles()
     ui->eventTicketPriceLabel->setStyleSheet(StyleHandler::getStyleForText());
     ui->eventTimeEdit->setStyleSheet(StyleHandler::getStyleForDate());
     ui->eventTimeLabel->setStyleSheet(StyleHandler::getStyleForText());
+}
+
+void AddEventForm::setAdmin(Administrator * _admin)
+{
+    currentAdmin=_admin;
 }
 bool AddEventForm::isFieldsFilled(){
     return ui->eventNameEdit->text().isEmpty() || ui->eventTicketAmountEdit->text().isEmpty() || ui->eventTicketPriceEdit->text().isEmpty();

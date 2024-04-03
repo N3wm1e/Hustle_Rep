@@ -22,9 +22,15 @@ bool Administrator::deleteEventTickets(Event & _event)
     return true;
 }
 
-bool Administrator::watchAllBoughtTickets()
+QStringList Administrator::watchAllBoughtTickets()
 {
-    return true;
+    QStringList strList;
+    for(auto&i:Event::getEvents()){
+        for(const auto&j:i.getEventTickets()){
+            if(j.getBought())strList.push_back(j.getEventName() + " | " + QString::number(j.getId()) + " | " + j.getBuyerName() + " | " + QString::number(j.getTicketPrice()));
+        }
+    }
+    return strList;
 }
 
 bool Administrator::deleteTicket(Ticket & _ticket)
@@ -52,19 +58,28 @@ bool Administrator::editEvent(Event * _event,const QString &eventName, const QDa
     return true;
 }
 
-bool Administrator::removeEvent(Event &_event)
+bool Administrator::removeEvent(Event &_event, int _index)
 {
-    return _event!=Event(QString());
-}
-
-bool Administrator::addEvent()
-{
+    deleteEventTickets(_event);
+    Event::getEvents().removeAt(_index);
     return true;
 }
 
-bool Administrator::watchAllEvents()
+bool Administrator::addEvent(const QString& _name, const QDateTime& _time, int _amount, int _price)
 {
+    Event newEvent(_name);
+    newEvent.setEventTime(_time);
+    newEvent.setEventTickets(newEvent.generateTickets(_amount, _price));
+    newEvent.setFinished(_time <= QDateTime::currentDateTime());
+    Event::getEvents().push_back(newEvent);
     return true;
+}
+
+QStringList Administrator::watchAllEvents()
+{
+    QStringList events;
+    for(const auto&event:Event::getEvents()) events.push_back(event.getEventName());
+    return events;
 }
 
 QList<Administrator> Administrator::admins;

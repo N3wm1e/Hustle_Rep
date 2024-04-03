@@ -15,13 +15,13 @@ public:
     bool editCustomer(Customer*, const QString&, const QString&, int);
     bool addCustomer(const QString&, const QString&, int);
     bool deleteEventTickets(Event&);
-    bool watchAllBoughtTickets();
+    QStringList watchAllBoughtTickets();
     bool deleteTicket(Ticket&);
     bool deleteAllTickets();
     bool editEvent(Event *,const QString&, const QDateTime&, int, int);
-    bool removeEvent(Event&);
-    bool addEvent();
-    bool watchAllEvents();
+    bool removeEvent(Event&, int);
+    bool addEvent(const QString&, const QDateTime&, int, int);
+    QStringList watchAllEvents();
     static QList<Administrator>& getAdmins();
 };
 

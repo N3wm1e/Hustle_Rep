@@ -6,6 +6,7 @@
 #include<QFormLayout>
 #include<QMessageBox>
 #include <stylehandler.h>
+#include <administrator.h>
 
 namespace Ui {
 class AddEventForm;
@@ -21,11 +22,13 @@ public:
     bool isFieldsFilled();
     bool checkFields();
     void setStyles();
+    void setAdmin(Administrator*);
 private slots:
     void on_addEventBtn_clicked();
 
 private:
     Ui::AddEventForm *ui;
+    Administrator* currentAdmin;
 };
 
 #endif // ADDEVENTFORM_H

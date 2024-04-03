@@ -105,13 +105,8 @@ void AdminMenu::on_showAllAccountsBtn_clicked()
 void AdminMenu::on_showAllTicketsBtn_clicked()
 {
     ui->ticketList->clear();
-    //qDebug() << ui->showOnlyBoughtCheck->isChecked();
     if(ui->showOnlyBoughtCheck->isChecked()){
-        for(auto&i:Event::getEvents()){
-            for(const auto&j:i.getEventTickets()){
-                if(j.getBought())ui->ticketList->addItem(j.getEventName() + " | " + QString::number(j.getId()) + " | " + j.getBuyerName() + " | " + QString::number(j.getTicketPrice()));
-            }
-        }
+        for(const auto&i:currentAdmin->watchAllBoughtTickets()) ui->ticketList->addItem(i);
     }
     else{
         for(auto&i:Event::getEvents()){
@@ -152,6 +147,7 @@ void AdminMenu::on_addEventBtn_clicked()
     if(!addEventForm){
         addEventForm = new AddEventForm;
     }
+    addEventForm->setAdmin(currentAdmin);
     addEventForm->exec();
     on_showAllEventsBtn_clicked();
     on_showAllTicketsBtn_clicked();
@@ -189,10 +185,9 @@ void AdminMenu::on_deleteEventBtn_clicked()
         auto eventIt = std::find_if(eventList.begin(), eventList.end(), [eventName](const Event& other){
             return eventName == other.getEventName();
         });
-        currentAdmin->deleteEventTickets(*eventIt);
         if(eventIt != eventList.end()){
             int index = std::distance(eventList.begin(), eventIt);
-            Event::getEvents().removeAt(index);
+            currentAdmin->removeEvent(*eventIt, index);
             ui->eventsList->takeItem(ui->eventsList->row(ui->eventsList->currentItem()));
             QMessageBox::information(this, "Online Cash Register", "The event is successfully deleted!");
             on_showAllEventsBtn_clicked();
@@ -210,7 +205,7 @@ void AdminMenu::on_deleteEventBtn_clicked()
 void AdminMenu::on_showAllEventsBtn_clicked()
 {
     ui->eventsList->clear();
-    for(const auto&event:Event::getEvents()) ui->eventsList->addItem(event.getEventName());
+    for(const auto&eventName:currentAdmin->watchAllEvents()) ui->eventsList->addItem(eventName);
 }
 
 void AdminMenu::on_RemoveAllTicketsOnEvent_clicked()
